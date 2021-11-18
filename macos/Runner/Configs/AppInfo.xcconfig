@@ -8,7 +8,7 @@
 PRODUCT_NAME = v2fly
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.v2fly
+PRODUCT_BUNDLE_IDENTIFIER = app.dier.v2fly
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2021 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2021 app.dier. All rights reserved.

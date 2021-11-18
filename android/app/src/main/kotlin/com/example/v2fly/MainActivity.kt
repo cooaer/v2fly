@@ -1,4 +1,4 @@
-package com.example.v2fly
+package app.dier.v2fly
 
 import io.flutter.embedding.android.FlutterActivity
 
