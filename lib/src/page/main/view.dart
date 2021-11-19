@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:v2fly/generated/l10n.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+import 'logic.dart';
+
+class MainPage extends StatefulWidget {
+  const MainPage(this.title, {Key? key}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
+  final logic = Get.put(MainLogic());
+  final state = Get.find<MainLogic>().state;
+
   int _selectedTabIndex = 0;
 
   void _onTapTab(int index) {
