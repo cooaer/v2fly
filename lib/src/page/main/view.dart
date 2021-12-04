@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v2fly/generated/l10n.dart';
+import 'package:v2fly/src/page/first/view.dart';
+import 'package:v2fly/src/page/nodes/view.dart';
 
 import 'logic.dart';
 
@@ -13,7 +15,8 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage>
+    with SingleTickerProviderStateMixin {
   final logic = Get.put(MainLogic());
   final state = Get.find<MainLogic>().state;
 
@@ -26,25 +29,14 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have tapped index:',
-            ),
-            Text(
-              '$_selectedTabIndex',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: _buildBody(context),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTabIndex,
         onTap: _onTapTab,
@@ -56,5 +48,13 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
     );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    if (_selectedTabIndex == 0) {
+      return FirstPage();
+    } else {
+      return NodesPage();
+    }
   }
 }
