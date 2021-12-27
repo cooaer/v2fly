@@ -1,14 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:v2fly/src/common/extensions/list_extensions.dart';
+import 'package:v2fly/src/common/extensions/list.dart';
 import 'package:v2fly/src/common/network/http_maker.dart';
-import 'package:v2fly/src/model/api/website_api.dart';
+import 'package:v2fly/src/api/v2ex_api.dart';
 
 import 'state.dart';
 
 class FirstLogic extends GetxController {
   final FirstState state = FirstState();
-  final WebsiteApi api = WebsiteApi(doHttpMaker);
+  final V2exApi api = V2exApi(doHttpMaker);
   final ScrollController scrollController = ScrollController();
 
   FirstLogic() {}

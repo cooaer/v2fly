@@ -4,8 +4,13 @@ DateFormat dateTimeFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
 
 DateFormat dateFormat = DateFormat('yyyy-MM-dd');
 
-DateTime dateTimeFromString(String str) {
-  return dateTimeFormat.parse(str);
+DateTime? dateTimeFromString(String str) {
+  try{
+    return dateTimeFormat.parse(str);
+  }on FormatException catch (e){
+    print(e);
+  }
+  return null;
 }
 
 String dateTimeToString(DateTime dateTime) {

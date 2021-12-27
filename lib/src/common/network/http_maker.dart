@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:v2fly/src/common/network/response.dart';
+
 import 'http.dart';
 
 class HttpMakerParams {
@@ -11,16 +13,17 @@ class HttpMakerParams {
   static const methodPost = 'post';
 }
 
-typedef HttpMaker<T> = T? Function(Map<String, dynamic> params);
+typedef HttpMaker<T> = Future<NetworkResponse<T?>> Function(
+    Map<String, dynamic> params);
 
-Future<T?> doHttpMaker<T extends String>(Map<String, dynamic> params) {
-  var url = params.remove(HttpMakerParams.url);
-  var method = params.remove(HttpMakerParams.method);
-  var data = params.remove(HttpMakerParams.data);
-  var headers = params.remove(HttpMakerParams.headers);
+Future<NetworkResponse<T?>> doHttpMaker<T>(Map<String, dynamic> params) {
+  var url = params[HttpMakerParams.url];
+  var method = params[HttpMakerParams.method];
+  var data = params[HttpMakerParams.data];
+  var headers = params[HttpMakerParams.headers];
   switch (method) {
     case HttpMakerParams.methodGet:
-      return doHttpGet<T>(url);
+      return doHttpGet<T>(url, headers: headers);
     case HttpMakerParams.methodPost:
       return doHttpPost<T>(url, data, headers);
   }

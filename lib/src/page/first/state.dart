@@ -1,5 +1,5 @@
-import 'package:v2fly/src/model/entity/home.dart';
-import 'package:v2fly/src/model/entity/topic.dart';
+import 'package:v2fly/src/model/home.dart';
+import 'package:v2fly/src/model/topic.dart';
 
 class FirstState {
   static const cachedTabsCount = 3;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:v2fly/generated/l10n.dart';
-import 'package:v2fly/src/page/main/view.dart';
+import 'package:v2fly/src/route.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -22,9 +22,8 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: Builder(builder: (context) {
-        return MainPage(S.of(context).appName);
-      }),
+      initialRoute: RouteConfig.main,
+      getPages: RouteConfig.getPages,
     );
   }
 }

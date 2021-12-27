@@ -7,9 +7,10 @@ import 'package:v2fly/src/page/nodes/view.dart';
 import 'logic.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage(this.title, {Key? key}) : super(key: key);
+  static const tabFirst = "first";
+  static const tabNodes = "nodes";
 
-  final String title;
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -17,7 +18,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
-  final logic = Get.put(MainLogic());
+  final logic = Get.find<MainLogic>();
   final state = Get.find<MainLogic>().state;
 
   int _selectedTabIndex = 0;
@@ -30,7 +31,20 @@ class _MainPageState extends State<MainPage>
 
   @override
   void initState() {
+    _initSelectedTabIndex();
     super.initState();
+  }
+
+  void _initSelectedTabIndex() {
+    final defaultTab = Get.parameters["tab"];
+    switch (defaultTab) {
+      case MainPage.tabNodes:
+        _selectedTabIndex = 1;
+        break;
+      default:
+        _selectedTabIndex = 0;
+        break;
+    }
   }
 
   @override
